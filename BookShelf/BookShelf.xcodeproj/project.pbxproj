@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E06A82C2B06B4DC0051BB47 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06A82B2B06B4DC0051BB47 /* PlayerView.swift */; };
+		5E06A82E2B06B50D0051BB47 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06A82D2B06B50D0051BB47 /* DescriptionView.swift */; };
+		5E06A8312B06C2350051BB47 /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06A8302B06C2350051BB47 /* CustomToggleStyle.swift */; };
 		5E984D3F2B04E1A800AB6EDC /* BookShelfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D3E2B04E1A800AB6EDC /* BookShelfApp.swift */; };
-		5E984D412B04E1A800AB6EDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D402B04E1A800AB6EDC /* ContentView.swift */; };
+		5E984D412B04E1A800AB6EDC /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D402B04E1A800AB6EDC /* BookView.swift */; };
 		5E984D432B04E1AA00AB6EDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E984D422B04E1AA00AB6EDC /* Assets.xcassets */; };
 		5E984D462B04E1AA00AB6EDC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E984D452B04E1AA00AB6EDC /* Preview Assets.xcassets */; };
 		5E984D502B04E1AA00AB6EDC /* BookShelfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D4F2B04E1AA00AB6EDC /* BookShelfTests.swift */; };
 		5E984D5A2B04E1AA00AB6EDC /* BookShelfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D592B04E1AA00AB6EDC /* BookShelfUITests.swift */; };
 		5E984D5C2B04E1AA00AB6EDC /* BookShelfUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D5B2B04E1AA00AB6EDC /* BookShelfUITestsLaunchTests.swift */; };
+		5EA3A5092B07E03400C0EAE2 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3A5082B07E03400C0EAE2 /* CustomSegmentedControl.swift */; };
+		5EA43A932B07C0A700B3F55A /* SegmentedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA43A922B07C0A700B3F55A /* SegmentedPickerView.swift */; };
+		5EC664772B0520F90022FDF1 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5EC664762B0520F90022FDF1 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E06A82B2B06B4DC0051BB47 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		5E06A82D2B06B50D0051BB47 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		5E06A8302B06C2350051BB47 /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		5E984D3B2B04E1A800AB6EDC /* BookShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E984D3E2B04E1A800AB6EDC /* BookShelfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfApp.swift; sourceTree = "<group>"; };
-		5E984D402B04E1A800AB6EDC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5E984D402B04E1A800AB6EDC /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		5E984D422B04E1AA00AB6EDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E984D452B04E1AA00AB6EDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5E984D4B2B04E1AA00AB6EDC /* BookShelfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookShelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +53,9 @@
 		5E984D552B04E1AA00AB6EDC /* BookShelfUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookShelfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E984D592B04E1AA00AB6EDC /* BookShelfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfUITests.swift; sourceTree = "<group>"; };
 		5E984D5B2B04E1AA00AB6EDC /* BookShelfUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5EA3A5082B07E03400C0EAE2 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		5EA43A922B07C0A700B3F55A /* SegmentedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPickerView.swift; sourceTree = "<group>"; };
+		5EC7279A2B0565BD007CCCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC664772B0520F90022FDF1 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E06A82F2B06C1250051BB47 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5E06A8302B06C2350051BB47 /* CustomToggleStyle.swift */,
+				5EA43A922B07C0A700B3F55A /* SegmentedPickerView.swift */,
+				5EA3A5082B07E03400C0EAE2 /* CustomSegmentedControl.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5E984D322B04E1A800AB6EDC = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +117,12 @@
 		5E984D3D2B04E1A800AB6EDC /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
+				5E06A82F2B06C1250051BB47 /* Components */,
+				5EC7279A2B0565BD007CCCC6 /* Info.plist */,
 				5E984D3E2B04E1A800AB6EDC /* BookShelfApp.swift */,
-				5E984D402B04E1A800AB6EDC /* ContentView.swift */,
+				5E984D402B04E1A800AB6EDC /* BookView.swift */,
+				5E06A82B2B06B4DC0051BB47 /* PlayerView.swift */,
+				5E06A82D2B06B50D0051BB47 /* DescriptionView.swift */,
 				5E984D422B04E1AA00AB6EDC /* Assets.xcassets */,
 				5E984D442B04E1AA00AB6EDC /* Preview Content */,
 			);
@@ -143,6 +170,9 @@
 			dependencies = (
 			);
 			name = BookShelf;
+			packageProductDependencies = (
+				5EC664762B0520F90022FDF1 /* ComposableArchitecture */,
+			);
 			productName = BookShelf;
 			productReference = 5E984D3B2B04E1A800AB6EDC /* BookShelf.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +245,9 @@
 				Base,
 			);
 			mainGroup = 5E984D322B04E1A800AB6EDC;
+			packageReferences = (
+				5EC664752B0520F90022FDF1 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 5E984D3C2B04E1A800AB6EDC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E984D412B04E1A800AB6EDC /* ContentView.swift in Sources */,
+				5EA3A5092B07E03400C0EAE2 /* CustomSegmentedControl.swift in Sources */,
+				5E06A82C2B06B4DC0051BB47 /* PlayerView.swift in Sources */,
+				5E984D412B04E1A800AB6EDC /* BookView.swift in Sources */,
+				5E06A8312B06C2350051BB47 /* CustomToggleStyle.swift in Sources */,
 				5E984D3F2B04E1A800AB6EDC /* BookShelfApp.swift in Sources */,
+				5E06A82E2B06B50D0051BB47 /* DescriptionView.swift in Sources */,
+				5EA43A932B07C0A700B3F55A /* SegmentedPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,9 +458,9 @@
 				DEVELOPMENT_TEAM = 2WFPXMG3LN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookShelf/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -449,9 +487,9 @@
 				DEVELOPMENT_TEAM = 2WFPXMG3LN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookShelf/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -583,6 +621,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5EC664752B0520F90022FDF1 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5EC664762B0520F90022FDF1 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EC664752B0520F90022FDF1 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5E984D332B04E1A800AB6EDC /* Project object */;
 }
