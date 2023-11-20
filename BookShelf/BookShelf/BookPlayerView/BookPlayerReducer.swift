@@ -25,7 +25,6 @@ struct BookPlayer: Reducer {
         var chapterDescription = ""
         var chaptersCount = 0
         
-        
         enum Rate: Float {
             case one = 1
             case onePoint25 = 1.25
@@ -34,9 +33,7 @@ struct BookPlayer: Reducer {
         }
     }
     
-    
     enum Action {
-        //        case alert(PresentationAction<AlertAction>)
         case playButtonTapped
         case setupPlayer
         case fastForward
@@ -49,17 +46,16 @@ struct BookPlayer: Reducer {
         case sliderValueChanged(Double)
     }
     
-    //    @Dependency(\.audioPlayer) var audioPlayer
-    //    @Dependency(\.continuousClock) var clock
-    //    private enum CancelID { case play }
-    //    enum AlertAction: Equatable {}
-    
     private func nextPrevButtonEnabling(
         state: inout State
     ) -> Effect<Action> {
         state.isNextButtonDisable = state.currentIndex == state.chaptersItems.count - 1
         state.isPreviousButtonDisable = state.currentIndex == 0
         return .none
+    }
+    
+    enum PlayerError: Error {
+        case resourceNotFound
     }
     
     var body: some Reducer<State, Action> {
@@ -76,7 +72,11 @@ struct BookPlayer: Reducer {
                 return .none
                 
             case .setupPlayer:
-                setupPlayer(&state)
+                do {
+                    try setupPlayer(&state)
+                } catch {
+                    print("Error loading chapters: Resource not found")
+                }
                 return .none
             case .fastForward:
                 fastForward(&state)
@@ -136,7 +136,6 @@ struct BookPlayer: Reducer {
                 seek(to: time, &state)
                 return .none
             }
-            
         }
     }
     
@@ -149,12 +148,15 @@ struct BookPlayer: Reducer {
         state.chapterDescription = state.book.chaptersDescription[index]
     }
     
-    func setupPlayer(_ state: inout State) {
+    func setupPlayer(_ state: inout State) throws {
         for name in state.book.chaptersNames {
-            
-            if let path = Bundle.main.path(forResource: name, ofType: "mp3") {
+            do {
+                guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+                    throw PlayerError.resourceNotFound
+                }
                 let url = URL(fileURLWithPath: path)
-                state.chaptersItems.append(AVPlayerItem(url: url))
+                let playerItem = AVPlayerItem(url: url)
+                state.chaptersItems.append(playerItem)
             }
         }
         state.audioPlayer = AVQueuePlayer(items: state.chaptersItems)

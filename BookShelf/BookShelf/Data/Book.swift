@@ -9,18 +9,9 @@ import Foundation
 
 struct Book: Codable, Equatable, Identifiable {
     var id = UUID()
-    
-    //    let url: String
     let name: String
     let chaptersNames: [String]
     let chaptersDescription: [String]
-//    let isbn: String
-//    let authors: [String]
-//    let numberOfPages: Int
-//    let publisher: String
-//    let country: String
-//    let mediaType, released: String
-//    let characters, povCharacters: [String]
 }
 
 extension Book {
@@ -40,6 +31,5 @@ extension Book {
             "Marianne and Elinor discuss Mr. Ferrars; Fanny makes her family's position clear",
             "Goodbye to dear, dear Norland"
         ]
-        
     )
 }
