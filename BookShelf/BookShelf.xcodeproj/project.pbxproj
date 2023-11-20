@@ -10,8 +10,12 @@
 		5E06A82C2B06B4DC0051BB47 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06A82B2B06B4DC0051BB47 /* PlayerView.swift */; };
 		5E06A82E2B06B50D0051BB47 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06A82D2B06B50D0051BB47 /* DescriptionView.swift */; };
 		5E06A8312B06C2350051BB47 /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06A8302B06C2350051BB47 /* CustomToggleStyle.swift */; };
+		5E7A9B3B2B0944B700F7FE67 /* AudioPlayerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9B3A2B0944B700F7FE67 /* AudioPlayerClient.swift */; };
+		5E7A9B3F2B094C8300F7FE67 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9B3E2B094C8300F7FE67 /* DateFormatter.swift */; };
+		5E89D7B82B0974F600A28A61 /* BookPlayerReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E89D7B72B0974F600A28A61 /* BookPlayerReducer.swift */; };
+		5E89D7BB2B09787F00A28A61 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E89D7BA2B09787F00A28A61 /* Book.swift */; };
 		5E984D3F2B04E1A800AB6EDC /* BookShelfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D3E2B04E1A800AB6EDC /* BookShelfApp.swift */; };
-		5E984D412B04E1A800AB6EDC /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D402B04E1A800AB6EDC /* BookView.swift */; };
+		5E984D412B04E1A800AB6EDC /* BookPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D402B04E1A800AB6EDC /* BookPlayerView.swift */; };
 		5E984D432B04E1AA00AB6EDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E984D422B04E1AA00AB6EDC /* Assets.xcassets */; };
 		5E984D462B04E1AA00AB6EDC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E984D452B04E1AA00AB6EDC /* Preview Assets.xcassets */; };
 		5E984D502B04E1AA00AB6EDC /* BookShelfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D4F2B04E1AA00AB6EDC /* BookShelfTests.swift */; };
@@ -19,6 +23,11 @@
 		5E984D5C2B04E1AA00AB6EDC /* BookShelfUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E984D5B2B04E1AA00AB6EDC /* BookShelfUITestsLaunchTests.swift */; };
 		5EA3A5092B07E03400C0EAE2 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3A5082B07E03400C0EAE2 /* CustomSegmentedControl.swift */; };
 		5EA43A932B07C0A700B3F55A /* SegmentedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA43A922B07C0A700B3F55A /* SegmentedPickerView.swift */; };
+		5EA7BB742B0A20B900F84FFE /* sense_sensibility_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EA7BB732B0A20B900F84FFE /* sense_sensibility_01.mp3 */; };
+		5EA7BB8D2B0AD2A000F84FFE /* sense_sensibility_04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EA7BB892B0AD29F00F84FFE /* sense_sensibility_04.mp3 */; };
+		5EA7BB8E2B0AD2A000F84FFE /* sense_sensibility_05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EA7BB8A2B0AD29F00F84FFE /* sense_sensibility_05.mp3 */; };
+		5EA7BB8F2B0AD2A000F84FFE /* sense_sensibility_03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EA7BB8B2B0AD2A000F84FFE /* sense_sensibility_03.mp3 */; };
+		5EA7BB902B0AD2A000F84FFE /* sense_sensibility_02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EA7BB8C2B0AD2A000F84FFE /* sense_sensibility_02.mp3 */; };
 		5EC664772B0520F90022FDF1 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5EC664762B0520F90022FDF1 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -43,9 +52,13 @@
 		5E06A82B2B06B4DC0051BB47 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		5E06A82D2B06B50D0051BB47 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		5E06A8302B06C2350051BB47 /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
+		5E7A9B3A2B0944B700F7FE67 /* AudioPlayerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerClient.swift; sourceTree = "<group>"; };
+		5E7A9B3E2B094C8300F7FE67 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		5E89D7B72B0974F600A28A61 /* BookPlayerReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPlayerReducer.swift; sourceTree = "<group>"; };
+		5E89D7BA2B09787F00A28A61 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		5E984D3B2B04E1A800AB6EDC /* BookShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E984D3E2B04E1A800AB6EDC /* BookShelfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfApp.swift; sourceTree = "<group>"; };
-		5E984D402B04E1A800AB6EDC /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		5E984D402B04E1A800AB6EDC /* BookPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPlayerView.swift; sourceTree = "<group>"; };
 		5E984D422B04E1AA00AB6EDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E984D452B04E1AA00AB6EDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5E984D4B2B04E1AA00AB6EDC /* BookShelfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookShelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +68,11 @@
 		5E984D5B2B04E1AA00AB6EDC /* BookShelfUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5EA3A5082B07E03400C0EAE2 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		5EA43A922B07C0A700B3F55A /* SegmentedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPickerView.swift; sourceTree = "<group>"; };
+		5EA7BB732B0A20B900F84FFE /* sense_sensibility_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sense_sensibility_01.mp3; sourceTree = "<group>"; };
+		5EA7BB892B0AD29F00F84FFE /* sense_sensibility_04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sense_sensibility_04.mp3; sourceTree = "<group>"; };
+		5EA7BB8A2B0AD29F00F84FFE /* sense_sensibility_05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sense_sensibility_05.mp3; sourceTree = "<group>"; };
+		5EA7BB8B2B0AD2A000F84FFE /* sense_sensibility_03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sense_sensibility_03.mp3; sourceTree = "<group>"; };
+		5EA7BB8C2B0AD2A000F84FFE /* sense_sensibility_02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sense_sensibility_02.mp3; sourceTree = "<group>"; };
 		5EC7279A2B0565BD007CCCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +112,39 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		5E7A9B392B09449400F7FE67 /* AudioPlayerClient */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A9B3A2B0944B700F7FE67 /* AudioPlayerClient.swift */,
+			);
+			path = AudioPlayerClient;
+			sourceTree = "<group>";
+		};
+		5E7A9B3C2B094C6800F7FE67 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A9B3E2B094C8300F7FE67 /* DateFormatter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5E89D7B62B0974CD00A28A61 /* BookPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				5E984D402B04E1A800AB6EDC /* BookPlayerView.swift */,
+				5E89D7B72B0974F600A28A61 /* BookPlayerReducer.swift */,
+			);
+			path = BookPlayerView;
+			sourceTree = "<group>";
+		};
+		5E89D7B92B09787300A28A61 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5E89D7BA2B09787F00A28A61 /* Book.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		5E984D322B04E1A800AB6EDC = {
 			isa = PBXGroup;
 			children = (
@@ -117,10 +168,14 @@
 		5E984D3D2B04E1A800AB6EDC /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
+				5EA7BB722B0A208300F84FFE /* Content */,
+				5E89D7B92B09787300A28A61 /* Data */,
+				5E89D7B62B0974CD00A28A61 /* BookPlayerView */,
+				5E7A9B3C2B094C6800F7FE67 /* Helpers */,
+				5E7A9B392B09449400F7FE67 /* AudioPlayerClient */,
 				5E06A82F2B06C1250051BB47 /* Components */,
 				5EC7279A2B0565BD007CCCC6 /* Info.plist */,
 				5E984D3E2B04E1A800AB6EDC /* BookShelfApp.swift */,
-				5E984D402B04E1A800AB6EDC /* BookView.swift */,
 				5E06A82B2B06B4DC0051BB47 /* PlayerView.swift */,
 				5E06A82D2B06B50D0051BB47 /* DescriptionView.swift */,
 				5E984D422B04E1AA00AB6EDC /* Assets.xcassets */,
@@ -152,6 +207,18 @@
 				5E984D5B2B04E1AA00AB6EDC /* BookShelfUITestsLaunchTests.swift */,
 			);
 			path = BookShelfUITests;
+			sourceTree = "<group>";
+		};
+		5EA7BB722B0A208300F84FFE /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				5EA7BB732B0A20B900F84FFE /* sense_sensibility_01.mp3 */,
+				5EA7BB8C2B0AD2A000F84FFE /* sense_sensibility_02.mp3 */,
+				5EA7BB8B2B0AD2A000F84FFE /* sense_sensibility_03.mp3 */,
+				5EA7BB892B0AD29F00F84FFE /* sense_sensibility_04.mp3 */,
+				5EA7BB8A2B0AD29F00F84FFE /* sense_sensibility_05.mp3 */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +331,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA7BB902B0AD2A000F84FFE /* sense_sensibility_02.mp3 in Resources */,
 				5E984D462B04E1AA00AB6EDC /* Preview Assets.xcassets in Resources */,
+				5EA7BB8D2B0AD2A000F84FFE /* sense_sensibility_04.mp3 in Resources */,
+				5EA7BB8E2B0AD2A000F84FFE /* sense_sensibility_05.mp3 in Resources */,
+				5EA7BB742B0A20B900F84FFE /* sense_sensibility_01.mp3 in Resources */,
+				5EA7BB8F2B0AD2A000F84FFE /* sense_sensibility_03.mp3 in Resources */,
 				5E984D432B04E1AA00AB6EDC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,12 +362,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E7A9B3F2B094C8300F7FE67 /* DateFormatter.swift in Sources */,
+				5E7A9B3B2B0944B700F7FE67 /* AudioPlayerClient.swift in Sources */,
 				5EA3A5092B07E03400C0EAE2 /* CustomSegmentedControl.swift in Sources */,
+				5E89D7BB2B09787F00A28A61 /* Book.swift in Sources */,
 				5E06A82C2B06B4DC0051BB47 /* PlayerView.swift in Sources */,
-				5E984D412B04E1A800AB6EDC /* BookView.swift in Sources */,
+				5E984D412B04E1A800AB6EDC /* BookPlayerView.swift in Sources */,
 				5E06A8312B06C2350051BB47 /* CustomToggleStyle.swift in Sources */,
 				5E984D3F2B04E1A800AB6EDC /* BookShelfApp.swift in Sources */,
 				5E06A82E2B06B50D0051BB47 /* DescriptionView.swift in Sources */,
+				5E89D7B82B0974F600A28A61 /* BookPlayerReducer.swift in Sources */,
 				5EA43A932B07C0A700B3F55A /* SegmentedPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,7 +704,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.4.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
