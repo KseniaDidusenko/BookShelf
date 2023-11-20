@@ -12,20 +12,18 @@ import Foundation
 struct BookPlayer: Reducer {
     
     struct State: Equatable {
-        //        @BindingState var switchMode
-        //        @PresentationState var alert: AlertState<AlertAction>?
-        //        var player: Player.State
         var book: Book
-        //        var keyPoint: String
-        var audioPlayer: AVPlayer?
+        var audioPlayer: AVQueuePlayer?
         var isPlaying: Bool = false
         var currentTime: TimeInterval = 0
-        var chaptersItems: [URL] = []
+        var chaptersItems: [AVPlayerItem] = []
         var currentIndex = 0
         var isNextButtonDisable = false
         var isPreviousButtonDisable = true
         var rate = Rate.one
-        var nextRate = Rate.one
+        var duration: TimeInterval = 0
+        var chapterDescription = ""
+        var chaptersCount = 0
         
         
         enum Rate: Float {
@@ -46,6 +44,9 @@ struct BookPlayer: Reducer {
         case nextTrack
         case previousTrack
         case changeRate
+        case changeTimeInterval
+        case onReceiveTimeUpdate(TimeInterval)
+        case sliderValueChanged(Double)
     }
     
     //    @Dependency(\.audioPlayer) var audioPlayer
@@ -61,13 +62,6 @@ struct BookPlayer: Reducer {
         return .none
     }
     
-    private func restartRate(
-        state: inout State
-    ) -> Effect<Action> {
-        
-        return .none
-    }
-    
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
@@ -76,32 +70,13 @@ struct BookPlayer: Reducer {
                     state.audioPlayer?.pause()
                     state.isPlaying = false
                 } else {
-                    state.audioPlayer?.play()
+                    state.audioPlayer?.playImmediately(atRate: state.rate.rawValue)
                     state.isPlaying = true
                 }
                 return .none
                 
             case .setupPlayer:
                 setupPlayer(&state)
-                
-                
-
-//                    state.audioPlayer?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: 10), queue: nil) {[state] time in
-//                        guard let item = state.audioPlayer?.currentTime else{
-//                            return
-//                        }
-//                        print(item)
-////                        state.currentTime = item.tim
-//        //
-//        //                self.seekPos = time.seconds / item.duration.seconds
-//                    }
-//
-//                    // Set end time for updating UI when the track finishes
-//                    if let duration = state.audioPlayer?.currentItem?.duration.seconds, duration.isFinite {
-//                        state.currentTime = duration
-//                    }
-//
-                
                 return .none
             case .fastForward:
                 fastForward(&state)
@@ -112,17 +87,13 @@ struct BookPlayer: Reducer {
             case .nextTrack:
                 if state.currentIndex < state.chaptersItems.count - 1 {
                     state.currentIndex += 1
-                    state.audioPlayer = AVPlayer(url: state.chaptersItems[state.currentIndex])
-                    state.audioPlayer?.play()
-                    state.isPlaying = true
+                    play(index: state.currentIndex, &state)
                 }
                 return nextPrevButtonEnabling(state: &state)
             case .previousTrack:
                 if state.currentIndex != 0 {
                     state.currentIndex -= 1
-                    state.audioPlayer = AVPlayer(url: state.chaptersItems[state.currentIndex])
-                    state.audioPlayer?.play()
-                    state.isPlaying = true
+                    play(index: state.currentIndex, &state)
                 }
                 return nextPrevButtonEnabling(state: &state)
             case .changeRate:
@@ -131,29 +102,51 @@ struct BookPlayer: Reducer {
                     state.audioPlayer?.playImmediately(
                         atRate: BookPlayer.State.Rate.onePoint25.rawValue
                     )
+                    state.isPlaying = true
                     state.rate = .onePoint25
                 case .onePoint25:
                     state.audioPlayer?.playImmediately(
                         atRate: BookPlayer.State.Rate.onePoint5.rawValue
                     )
+                    state.isPlaying = true
                     state.rate = .onePoint5
                 case .onePoint5:
                     state.audioPlayer?.playImmediately(
                         atRate: BookPlayer.State.Rate.two.rawValue
                     )
+                    state.isPlaying = true
                     state.rate = .two
                 case .two:
                     state.audioPlayer?.playImmediately(
                         atRate: BookPlayer.State.Rate.one.rawValue
                     )
+                    state.isPlaying = true
                     state.rate = .one
-                    
-//                    return restartRate(state: &state)
                 }
+                return .none
+            case .changeTimeInterval:
+                return .none
+                
+            case .onReceiveTimeUpdate(let currentTime):
+                state.currentTime = currentTime
+                return .none
+                
+            case .sliderValueChanged(let time):
+                state.currentTime = time
+                seek(to: time, &state)
                 return .none
             }
             
         }
+    }
+    
+    func play(index: Int, _ state: inout State) {
+        state.audioPlayer?.removeAllItems()
+        let playerItem = state.chaptersItems[index]
+        playerItem.seek(to: CMTime.zero)
+        state.audioPlayer?.insert(playerItem, after: nil)
+        state.duration = state.audioPlayer?.currentItem?.asset.duration.seconds ?? 0
+        state.chapterDescription = state.book.chaptersDescription[index]
     }
     
     func setupPlayer(_ state: inout State) {
@@ -161,10 +154,13 @@ struct BookPlayer: Reducer {
             
             if let path = Bundle.main.path(forResource: name, ofType: "mp3") {
                 let url = URL(fileURLWithPath: path)
-                state.chaptersItems.append(url)
+                state.chaptersItems.append(AVPlayerItem(url: url))
             }
         }
-        state.audioPlayer = AVPlayer(url: state.chaptersItems.first!)
+        state.audioPlayer = AVQueuePlayer(items: state.chaptersItems)
+        state.chaptersCount = state.chaptersItems.count
+        state.chapterDescription = state.book.chaptersDescription.first ?? ""
+        state.duration = state.audioPlayer?.currentItem?.asset.duration.seconds ?? 0
     }
     
     func seek(to value: Double, _ state: inout State) {
@@ -173,39 +169,20 @@ struct BookPlayer: Reducer {
     }
     
     func fastForward(_ state: inout State) {
-        
         var time: TimeInterval = state.audioPlayer?.currentTime().seconds ?? 0.0
         time += 10.0
         if state.audioPlayer?.currentItem?.currentTime() == state.audioPlayer?.currentItem?.duration {
             return
         }
-        
         seek(to: time, &state)
     }
     
     func fastBackward(_ state: inout State) {
-        
         var time: TimeInterval = state.audioPlayer?.currentTime().seconds ?? 0.0
         time -= 5.0
         if state.audioPlayer?.currentItem?.currentTime() == .zero {
             return
         }
-        
         seek(to: time, &state)
-
     }
-    
-    func nextTrack(_ state: inout State) {
-    }
-    
-    func previousTrack() {
-        
-    }
-    
 }
-
- func formattedTime(_ time: TimeInterval) -> String {
-        let minutes = Int(time) / 60
-        let seconds = Int(time) % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }

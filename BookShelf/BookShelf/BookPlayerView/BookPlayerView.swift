@@ -9,8 +9,6 @@ import AVFoundation
 import ComposableArchitecture
 import SwiftUI
 
-
-
 struct BookPlayerView: View {
     
     @State private var sliderValue: Double = .zero
@@ -20,50 +18,40 @@ struct BookPlayerView: View {
     let store: StoreOf<BookPlayer>
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
+        WithViewStore(self.store, observe: { $0 } ) { viewStore in
             ScrollView(.vertical, showsIndicators: false) {
-                
-                
-                bookCover
-                VStack (alignment: .center, spacing: 16) {
-                    Text(viewStore.book.name)
+                VStack (alignment: .center, spacing: 8) {
+                    bookCover
+                    Text("Chapter \(viewStore.currentIndex + 1) of \(viewStore.chaptersCount)")
                         .font(.subheadline).bold()
                         .foregroundColor(.primary)
                         .opacity(0.5)
                     
-                    Text("Design is not how a thing looks, but how it works")
-                        .lineLimit(1...100)
+                    Text(viewStore.chapterDescription)
+                        .lineLimit(2)
                         .font(.subheadline)
+                        .frame(height: 44)
                         .padding(.leading, 24)
                         .padding(.trailing, 24)
-                        .padding(.bottom)
+                        .multilineTextAlignment(.center)
                 }
                 
                 
-                HStack{
+                HStack {
                     Text(formattedTime(viewStore.currentTime))
                         .font(.subheadline)
                         .foregroundColor(.gray)
-                    Slider(value: $sliderValue, in: 0...100)
+                    Slider(value: viewStore.binding(
+                        get: {$0.currentTime},
+                        send: BookPlayer.Action.sliderValueChanged
+                    ), in: 0...viewStore.duration)
                         .padding(.horizontal)
-                        .gesture(DragGesture()
-                            .onChanged({ (value) in
-                                
-                            })
-                                .onEnded({ (value) in
-                                    print("Ended in \(value)")
-                                    
-                                })
-                        )
-//                    dateComponentsFormatter.string(from: currentTime).map {
-                        Text("02:33")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        //                        .font(.footnote.monospacedDigit())
-                        //                        .foregroundColor(Color(.systemGray))
-//                    }
+                    Text(formattedTime(viewStore.duration))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
                 .padding(.horizontal)
+                .padding(.top, 12)
                 
                 Button {
                     viewStore.send(.changeRate)
@@ -71,9 +59,7 @@ struct BookPlayerView: View {
                     Text("Speed x\(viewStore.rate.rawValue.formatted())")
                         .bold()
                         .padding(.horizontal, 8)
-                    
                         .frame(width: 120, height: 44)
-                        
                         .foregroundColor(.black)
                         .background(Color("lightGray"))
                         .cornerRadius(8)
@@ -95,12 +81,13 @@ struct BookPlayerView: View {
                                 )
                         }
                         .disabled(viewStore.isPreviousButtonDisable)
+                        
                         Button {
                             viewStore.send(.fastBackward)
                         } label: {
                             Image(systemName: "gobackward.5")
-                            
                         }
+                        
                         Button {
                             viewStore.send(.playButtonTapped)
                         } label: {
@@ -108,13 +95,14 @@ struct BookPlayerView: View {
                                 .frame(height: 50)
                                 .font(.system(size: 47))
                                 .padding(.horizontal, 15)
-                            
                         }
+                        
                         Button {
                             viewStore.send(.fastForward)
                         } label: {
                             Image(systemName: "goforward.10")
                         }
+                        
                         Button {
                             viewStore.send(.nextTrack)
                         } label: {
@@ -138,45 +126,33 @@ struct BookPlayerView: View {
             }
             .onAppear() {
                 viewStore.send(.setupPlayer)
+                viewStore.audioPlayer?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: DispatchQueue.main) { time in
+                    let currentTime = time.seconds
+                    viewStore.send(.onReceiveTimeUpdate(currentTime))
+                }
             }
-            .onReceive(viewStore.publisher) { state in
-                            // Update UI based on state changes
-//                            viewStore.currentTime = state.audioPlayer?.currentTime ?? 0
-                print(state)
-                        }
-            
-        
-            }
-        
-        //        alert(store: self.store.scope(state: \.$alert, action: { .alert($0) }))
+        }
         .background(Color("Background"))
-
+        
     }
-    
 }
 
 extension BookPlayerView {
     var bookCover: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            
             VStack (alignment: .center, spacing: 8) {
                 Image("BookCover")
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(20)
                     .clipped()
-                    .aspectRatio(1, contentMode: .fit)
-                //                .frame(width: 360, height: 300)
+                    .aspectRatio(1.1, contentMode: .fit)
                     .padding(.bottom, 24)
                     .padding(.leading, 48)
                     .padding(.trailing, 48)
                     .padding(.top, 20)
-                //                .clipShape(RoundedRectangle(cornerRadius: 40))
-                //                .overlay(RoundedRectangle(cornerRadius: 10))
                 
             }
             .padding(.top)
-        }
     }
     
     var switchMode: some View {
@@ -190,9 +166,15 @@ extension BookPlayerView {
 }
 
 struct BookPlayerView_Previews: PreviewProvider {
-        static var previews: some View {
-            BookPlayerView(store: Store(initialState: BookPlayer.State(book: Book.mock), reducer: {
-                BookPlayer()
-            }))
+    static var previews: some View {
+        BookPlayerView(store: Store(initialState: BookPlayer.State(book: Book.mock), reducer: {
+            BookPlayer()
+        }))
     }
+}
+
+private func formattedTime(_ time: TimeInterval) -> String {
+    let minutes = Int(time) / 60
+    let seconds = Int(time) % 60
+    return String(format: "%02d:%02d", minutes, seconds)
 }

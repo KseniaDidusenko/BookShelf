@@ -13,6 +13,7 @@ struct Book: Codable, Equatable, Identifiable {
     //    let url: String
     let name: String
     let chaptersNames: [String]
+    let chaptersDescription: [String]
 //    let isbn: String
 //    let authors: [String]
 //    let numberOfPages: Int
@@ -31,6 +32,13 @@ extension Book {
             "sense_sensibility_03",
             "sense_sensibility_04",
             "sense_sensibility_05"
+        ],
+        chaptersDescription: [
+            "The Dashwood ladies have a change of situation",
+            "Mr. and Mrs. John Dashwood discuss his father's last wishes",
+            "The abilities and taste of Mr. Edward Ferrars",
+            "Marianne and Elinor discuss Mr. Ferrars; Fanny makes her family's position clear",
+            "Goodbye to dear, dear Norland"
         ]
         
     )
